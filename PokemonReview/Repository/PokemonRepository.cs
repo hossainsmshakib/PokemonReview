@@ -1,4 +1,6 @@
 ﻿using PokemonReview.Data;
+using PokemonReview.Models;
+using PokemonReview.Interfaces;
 
 namespace PokemonReview.Repository
 {
@@ -10,5 +12,9 @@ namespace PokemonReview.Repository
             _context = context;
         }
 
+        public ICollection<Pokemon> GetPokemons()
+        {
+            return _context.Pokemon.OrderBy(p  => p.Id).ToList();
+        }
     }
 }
